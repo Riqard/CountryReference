@@ -202,7 +202,10 @@ if selected == 'Home':
             
             ''', language='python')
 
-      
+    # acesss the report
+    urlPaper='https://drive.google.com/file/d/18EnmT0dNU9sLqIjlkL_8kKsp_dnzauwH/view?usp=share_link'
+    if st.button('Find the Report Here'):
+        webbrowser.open_new_tab(urlPaper)   
     
 
 
