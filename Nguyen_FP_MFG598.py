@@ -2,7 +2,7 @@
 """
 Created on Thu Apr 27 09:46:18 2023
 
-@author: richa
+@author: Richard Nguyen
 """
 
 import pandas as pd
@@ -87,7 +87,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     if charts=='Bar':
         st.plotly_chart(plotBar)
     
-    # next section
+    # Start of annual percent change section
     st.divider()
             
     #Displays percent change
@@ -117,7 +117,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     perPlot=px.line(perChange.T,labels={'index':'Years','value':'Percent %','Country':'Countries'}, title='Line Chart of Annual Percent Change')
     st.plotly_chart(perPlot) 
     
-    # next section
+    # start of comparing specific year section
     st.divider()
     
     #Moves to data for specific year
@@ -201,11 +201,16 @@ if selected == 'Home':
             import zipfile as zp
             
             ''', language='python')
-
-    # acesss the report
+    
     urlPaper='https://drive.google.com/file/d/18EnmT0dNU9sLqIjlkL_8kKsp_dnzauwH/view?usp=share_link'
     if st.button('Find the Report Here'):
-        webbrowser.open_new_tab(urlPaper)   
+        webbrowser.open_new_tab(urlPaper) 
+        
+    urlGit='https://github.com/Riqard/MFG598-Final-Project.git'
+    if st.button('Find the Repository Here'):
+        webbrowser.open_new_tab(urlGit) 
+
+      
     
 
 
@@ -386,11 +391,11 @@ if selected == 'Military Ependiture':
         
         # annual military expenditure
         if choice1 == ['Annual Military Expenditures']:
-            milExpData=show_Data(milExp,cna,'United States of America',1949,2022,2021,'Measured in Millions USD (2021 prices)', 'Millions US Dollars (2021 prices)' ,'Compare Military Expenditure in a Specifc Year', 'Annual Military Expenditure')
+            milExpData=show_Data(milExp,cna,'United States of America',1949,2022,2021,'Measured in Millions USD (2021 prices)', 'Millions US Dollars (2021 prices)' ,'Compare Military Expenditure for a Specifc Year', 'Annual Military Expenditure')
         
         # mil exp as a percent of GDP
         if choice1 == ['Annual Military Expenditures as a Share of GDP']:
-            milExpPerData=show_Data(milExpPer,cna,'United States of America',1949,2022,2021,'Measured as a Percent Makeup', 'Percentage of GDP' ,'Compare Share of GDP in a Specifc Year', 'Annual Military Expenditure as a Share of GDP')
+            milExpPerData=show_Data(milExpPer,cna,'United States of America',1949,2022,2021,'Measured as a Percent Makeup', 'Percentage of GDP' ,'Compare Share of GDP for a Specifc Year', 'Annual Military Expenditure as a Share of GDP')
             
     # Go to original data source
     with milLink:
@@ -439,15 +444,15 @@ if selected == 'Population':
         
         # Total Population
         if choice2==['Total Population']:
-            totPopData=show_Data(totPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,   'Compare Populations', 'Total Populations of Countries')
+            totPopData=show_Data(totPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,   'Compare Populations for a Specific Year', 'Total Populations of Countries')
         
         # Male Population
         if choice2==['Male Population']:
-            totPopData=show_Data(mPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,   'Compare Populations', 'Total Male Populations of Countries')
+            totPopData=show_Data(mPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,   'Compare Populations for a Specific Year', 'Total Male Populations of Countries')
         
         # Female Population
         if choice2==['Female Population']:
-            totPopData=show_Data(fPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,  'Compare Populations', 'Total Female Populations of Countries')
+            totPopData=show_Data(fPopData,'China (and dependencies)','United States of America (and dependencies)',1950,2100,2022,'Measured in Amount of People', 'People' ,  'Compare Populations for a Specific Year', 'Total Female Populations of Countries')
 
     # Go to original data source
     with popLink:
