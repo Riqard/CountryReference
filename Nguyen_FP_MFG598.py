@@ -14,7 +14,7 @@ import webbrowser
 from PIL import Image
 import zipfile as zp
 
-
+#unzip the files being used
 zpName='Nguyen_FP_Data.zip'
 zpfile= zp.ZipFile(zpName,'r').extractall()
 
@@ -32,10 +32,14 @@ with st.sidebar:
         )
 
 
-# MAKE DATA CHARTS AND TABLES
+#MAIN CODE: MAKE DATA CHARTS AND TABLES#------------------------------------------------------------------------------------------------------------------------------------------------
+
 def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     
+    # header for each data set
     st.header(txt2)
+    
+    #import the data being defined
     df=data
     
     #Choose what countries you want to examine (Defaulted to China and US)
@@ -166,7 +170,7 @@ usa='United States'
 
 #HOME TAB#-------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#coe for Home section
+#code for Home section
 if selected == 'Home':
     st.balloons()
     
@@ -204,10 +208,12 @@ if selected == 'Home':
     
     urlPaper='https://drive.google.com/file/d/18EnmT0dNU9sLqIjlkL_8kKsp_dnzauwH/view?usp=share_link'
     if st.button('Find the Report Here'):
+        st.write(urlPaper)
         webbrowser.open_new_tab(urlPaper) 
         
     urlGit='https://github.com/Riqard/MFG598-Final-Project.git'
     if st.button('Find the Repository Here'):
+        st.write(urlGit)
         webbrowser.open_new_tab(urlGit) 
 
       
@@ -286,6 +292,7 @@ if selected == 'Economy':
         st.write("This Data originated from the International Monetary Fund")
         econURL='https://www.imf.org/en/Publications/WEO/weo-database/2023/April/download-entire-database'
         if st.button('International Monetary Fund'):
+            st.write(econURL)
             webbrowser.open_new_tab(econURL)
  
     
@@ -321,6 +328,7 @@ if selected == 'Human Development Index':
         st.write('This Data originated from the United Nations')
         hdiURL='https://hdr.undp.org/data-center/documentation-and-downloads'
         if st.button('United Nations Development Program'):
+            st.write(hdiURL)
             webbrowser.open_new_tab(hdiURL)
         
 
@@ -355,6 +363,7 @@ if selected == 'Manufacturing':
         mfgURL='https://data.worldbank.org/indicator/NV.IND.MANF.CD?end=2021&start=1960&view=chart'
         st.write('This Data originated from the World Bank')
         if st.button('World Bank'):
+            st.write(mfgURL)
             webbrowser.open_new_tab(mfgURL)      
         
     
@@ -402,6 +411,7 @@ if selected == 'Military Ependiture':
         milURL='https://milex.sipri.org/sipri'
         st.write('This Data originated from the Stockholm International Peace Research Institute')
         if st.button('Stockholm International Peace Research Institute'):
+            st.write(milURL)
             webbrowser.open_new_tab(milURL)
 
 
@@ -459,4 +469,5 @@ if selected == 'Population':
         st.write('This Data originated from the United Nations Department of Economic And Social Affairs')
         popURL='https://population.un.org/wpp/Download/Standard/CSV/'
         if st.button('United Nations Department of Economic And Social Affairs'):
+            st.write(popURL)
             webbrowser.open_new_tab(popURL)
