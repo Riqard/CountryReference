@@ -171,6 +171,7 @@ if selected == 'Home':
             import plotly.express as px \n
             from streamlit_option_menu import option_menu \n
             import webbrowser \n
+            import zipfile as zp \n
             from PIL import Image
             
             ''', language='python')
