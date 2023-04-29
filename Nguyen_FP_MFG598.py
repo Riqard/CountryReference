@@ -187,7 +187,7 @@ if selected == 'Home':
     st.header('Project Description')
     st.markdown("The purpose of this Final Project was to learn how to use Streamlit to make a quick reference guide relating to my applied project on "
                 +"**:red[The Developments of the People’s Republic of China,] and the :blue[Need to Reshore American Manufacturing]**. "
-                +"This guide will display areas of intrigue relating to a country’s :green[Economic, Human Development, Manufacturing, Military, and Population] data. "
+                +"This guide will display areas of intrigue relating to a country’s :green[Economic, Human Development, Manufacturing, Military Ependiture, and Population] data. "
                 +"It will display only the data for the given selected countries as well as the data at certain time frames. Links to the online sources of the data "
                 +"will be given, as well as the option to download the data. "
                 )
