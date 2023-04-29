@@ -265,7 +265,7 @@ if selected == 'Economy':
     st.write("This tab will display the global economic data ranging from 1980 to the projected data in 2028. " +"A country's Gross Domestic Product (GDP), is a measure of how much economic output a country generated, typically measured in US Dollars. " 
              +"A country's GDP per capita measures the economic output of a nation per resident. Purchasing Power Parity (PPP) is a metric that adjusts the US Dollar to more closely match how much a dollar is worth in a given country. "
              + "These metrics are based on items such as a nation's standard of living, currency, and more, taking a 'basket of goods' approach. "
-             +"The data past year 2022 are the International Monetary Fund's Projected figures.")
+             +"The data past year 2022 are the International Monetary Fund's projected figures.")
 
     econDataTb, econLink=st.tabs(['Data','Source'])
     
