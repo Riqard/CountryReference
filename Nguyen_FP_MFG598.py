@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 27 09:46:18 2023
 
 @author: Richard Nguyen
+
 """
 
 import pandas as pd
@@ -133,7 +133,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     
     #Makes dataframe based on specified year
     ySpecCntry=countryDB.T[str(ySpec)]
-    st.write(f'{txt2} at Year {ySpecStr}')
+    st.write(f'{txt2} at Year {ySpecStr} ({mesr1})')
     
     col5,col6=st.columns([2,1],gap='large')
         
@@ -143,7 +143,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
         "\n"
         "\n"
         "\n"
-        st.download_button(label='Download Data as CSV',data=ySpecCntry.to_csv().encode('utf-8'),file_name=f'{txt2}{countries} {str(ySpec)}.csv',mime='text/csv')
+        st.download_button(label='Download Data as CSV',data=ySpecCntry.to_csv().encode('utf-8'),file_name=f'{txt2} {mesr2} {countries} {str(ySpec)}.csv',mime='text/csv')
     
     #Makes pie data to compare
     pie=px.pie(countryDB.T,values=str(ySpec),names=countries,color=countries,title='Examine Size Makeup at Year '+ySpecStr)    
@@ -279,19 +279,19 @@ if selected == 'Economy':
        
        # GDP - USD
        if choice == ['GDP-USD']:
-           USDGDP=show_Data(econDataUSDGDP,cna,usa,1980,2028,2022,'Data Measured in Millions USD (2021 Prices)','Millions USD (2021 Prices)','Compare GDP for a Specific Year',"Country's GDP in USD")
+           USDGDP=show_Data(econDataUSDGDP,cna,usa,1980,2028,2022,'Measured in Millions USD (2021 Prices)','Millions USD (2021 Prices)','Compare GDP for a Specific Year',"Country's GDP in USD")
        
         # GDP/Capita - USD
        if choice == ['GDP-USD per Capita']:
-           USDGDPCap=show_Data(econDataUSDGDPCap,cna,usa,1980,2028,2022,'Data Measured in USD (2021 Prices)','USD (2021 Prices)','Compare GDP/Capita for a Specific Year',"Country's GDP per Capita in USD")
+           USDGDPCap=show_Data(econDataUSDGDPCap,cna,usa,1980,2028,2022,'Measured in USD (2021 Prices)','USD (2021 Prices)','Compare GDP/Capita for a Specific Year',"Country's GDP per Capita in USD")
        
         # GDP - PPP
        if choice == ['GDP-PPP']:
-           PPPGDP=show_Data(econDataPPPGDP,cna,usa,1980,2028,2022,'Data Measured in Purchasing Power Parity; Millions International Dollars', 'Millions International Dollars' , 'Compare GDP-PPP for a Specific Year',"Country's GDP in PPP")
+           PPPGDP=show_Data(econDataPPPGDP,cna,usa,1980,2028,2022,'Measured in Purchasing Power Parity; Millions International Dollars', 'Millions International Dollars' , 'Compare GDP-PPP for a Specific Year',"Country's GDP in PPP")
       
         # GDP/Capita - PPP
        if choice == ['GDP-PPP per Capita']:
-           PPPGDPCap=show_Data(econDataPPPGDPCap,cna,usa,1980,2028,2022,'Data Measured in Purchasing Power Parity; International Dollars', 'International Dollars', 'Compare GDP/Capita in PPP for a Specific Year',"Country's GDP per Capita in PPP")
+           PPPGDPCap=show_Data(econDataPPPGDPCap,cna,usa,1980,2028,2022,'Measured in Purchasing Power Parity; International Dollars', 'International Dollars', 'Compare GDP/Capita in PPP for a Specific Year',"Country's GDP per Capita in PPP")
     
     # Go to original data source
     with econLink:
