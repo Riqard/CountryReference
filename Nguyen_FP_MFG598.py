@@ -209,17 +209,17 @@ if selected == 'Home':
             ''', language='python')
     
     urlPaper='https://drive.google.com/file/d/18EnmT0dNU9sLqIjlkL_8kKsp_dnzauwH/view?usp=share_link'
-    if st.button('Find the Report Here'):
+    if st.button('Find the Report Here',use_container_width=True):
         st.write(urlPaper)
         webbrowser.open_new_tab(urlPaper) 
         
     urlGit='https://github.com/Riqard/MFG598-Final-Project.git'
-    if st.button('Find the Repository Here'):
+    if st.button('Find the Repository Here',use_container_width=True):
         st.write(urlGit)
         webbrowser.open_new_tab(urlGit) 
         
     urlApp='https://nguyencountryreferenceguide.streamlit.app/'
-    if st.button('Go to Online Version'):
+    if st.button('Go to Online Version',use_container_width=True):
         st.write(urlApp)
         webbrowser.open_new_tab(urlApp) 
 
