@@ -74,9 +74,9 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
             
     #plots data and interactive map
     plotLine=px.line(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Line Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
-    plotScatr=px.scatter(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Line Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
+    plotScatr=px.scatter(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Scatter Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
     plotArea=px.area(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Area Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
-    plotBar=px.bar(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Area Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
+    plotBar=px.bar(rCountryDB, labels={'index':'Years','value':mesr2,'Country':'Countries'}, title=f'Bar Chart of {txt2} from {str(min(yR))} to {str(max(yR))}')
 
     charts=st.radio('Which Chart do you want to See?',('Line','Scatter','Area','Bar'))
     if charts=='Line':
