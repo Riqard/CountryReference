@@ -271,9 +271,9 @@ if selected == 'Economy':
     
     #Display data
     with econDataTb:
-       choice=[]
        
        #Choose what type of economic data will be displayed
+       choice=[]
        sel=st.selectbox('Choose what Data you Wish to See',('GDP-USD','GDP-USD per Capita','GDP-PPP','GDP-PPP per Capita'))
        choice.append(sel)
        
@@ -308,7 +308,6 @@ if selected == 'Economy':
 
 #Extract HDI Data
 hdiDF=pd.read_csv('HDR21-22_Composite_indices_complete_time_series.csv').set_index('Country')
-
 
 #Code for HDI section
 if selected == 'Human Development Index':
@@ -397,10 +396,9 @@ if selected == 'Military Ependiture':
     
     # Display data
     with milTb:
-        st.header('Military Expenditures')
-        choice1=[]
-        
+             
         # Choose annual military expenditure or military expenditure as a share of gdp
+        choice1=[]
         sel1=st.selectbox('Choose what Data you Wish to See',('Annual Military Expenditures','Annual Military Expenditures as a Share of GDP'))
         choice1.append(sel1)
         
