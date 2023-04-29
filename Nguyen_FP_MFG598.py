@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 27 09:46:18 2023
+
+@author: Richard Nguyen
+"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -47,7 +52,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     #Creates ranged specified data and displays the data
     rCountryDB=countryDB[str(min(yR)):str(max(yR))]
     st.write(mesr1, rCountryDB.T)
-        #Download Main Data
+    #Download Main Data
     df1=rCountryDB.T.to_csv().encode('utf-8')
     st.download_button(label='Download Dataframe as CSV',data=df1,file_name=f'{txt2}{countries}{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
     
@@ -55,18 +60,15 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     #Displays Total Percent Change for range
     totPerChange=pd.DataFrame()
     totPerChange[f'{str(min(yR))} - {str(max(yR))}']=rCountryDB.T.apply(lambda row: str((((row.iloc[-1] - row.iloc[0])/row.iloc[0])*100).round(2))+'%', axis=1)
-    
+    st.write('\n')
+    st.write(f'Total Percent Change for {txt2} from {str(min(yR))} to {str(max(yR))}')
     col1, col2 =st.columns([2,1],gap='large')
     with col1:
-        st.write('Total Percent Change')
         st.dataframe(totPerChange,use_container_width=True)
     with col2:
+        "\n"
+        "\n"
         #Download DF % Change
-        "\n"
-        "\n"
-        "\n"
-        "\n"
-        '\n'
         st.download_button(label='Download Data as CSV',data=totPerChange.to_csv().encode('utf-8'),file_name=f'TotPctChange{countries}_{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
             
             
@@ -90,26 +92,29 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     st.divider()
             
     #Displays percent change
-    st.subheader('Annual Percent Change')
-    perChange = rCountryDB.T.pct_change(axis='columns')*100
-    perChange
-    st.download_button(label='Download Data as CSV',data=perChange.to_csv().encode('utf-8'),file_name=f'AnnualPctChange{countries}_{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
+    st.subheader(f'Annual Percent Change for {txt2} from {str(min(yR))} to {str(max(yR))}')
+    perChange = (rCountryDB.T.pct_change(axis='columns')*100)
+    perChangeStr=perChange.round(2).astype(str)+'%'
+    perChangeStr
     
+    # download annual percent change as csv
+    st.download_button(label='Download Data as CSV',data=perChange.to_csv().encode('utf-8'),file_name=f'AnnualPctChange{countries}_{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
+ 
     #Get average % change
-    avgPerChange=perChange.mean(axis=1)
+    avgPerChange=perChange.mean(axis=1).round(2)
     perChangeAvg=pd.DataFrame()
     perChangeAvg['Average Annual Percent Change'] = avgPerChange
+    perChangeStrAvg=perChangeAvg['Average Annual Percent Change'].astype(str)+'%' 
+    st.write('\n \n \n \n \n')
+    st.write(f'Average Percent Change for {txt2} from {str(min(yR))} to {str(max(yR))}')
     
     col3, col4 =st.columns([2,1],gap='large')
     with col3:
-        st.write('Average Percent Change')
-        st.dataframe(perChangeAvg['Average Annual Percent Change'],use_container_width=True)
+        st.dataframe(perChangeStrAvg,use_container_width=True)
     with col4:
         "\n"
         "\n"
-        "\n"
-        "\n"
-        '\n'
+        #download Annual Percent Change as CSV
         st.download_button(label='Download Data as CSV',data=perChangeAvg.to_csv().encode('utf-8'),file_name=f'AnnualPctChange{countries}_{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
    
     #plot % change
@@ -128,17 +133,17 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     
     #Makes dataframe based on specified year
     ySpecCntry=countryDB.T[str(ySpec)]
+    st.write(f'{txt2} at Year {ySpecStr}')
+    
     col5,col6=st.columns([2,1],gap='large')
+        
     with col5:
-        st.write(mesr1)
         st.dataframe(ySpecCntry, use_container_width=True)
     with col6:
         "\n"
         "\n"
         "\n"
-        "\n"
-        '\n'
-        st.download_button(label='Download Data as CSV',data=ySpecCntry.to_csv().encode('utf-8'),file_name=f'Data{countries} {str(ySpec)}.csv',mime='text/csv')
+        st.download_button(label='Download Data as CSV',data=ySpecCntry.to_csv().encode('utf-8'),file_name=f'{txt2}{countries} {str(ySpec)}.csv',mime='text/csv')
     
     #Makes pie data to compare
     pie=px.pie(countryDB.T,values=str(ySpec),names=countries,color=countries,title='Examine Size Makeup at Year '+ySpecStr)    
@@ -161,6 +166,8 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
 #shoretened reference
 cna='China'
 usa='United States'
+
+
 
 
 #HOME TAB#-------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -210,9 +217,13 @@ if selected == 'Home':
     if st.button('Find the Repository Here'):
         st.write(urlGit)
         webbrowser.open_new_tab(urlGit) 
+        
+    urlApp='https://nguyencountryreferenceguide.streamlit.app/'
+    if st.button('Go to Online Version'):
+        st.write(urlApp)
+        webbrowser.open_new_tab(urlApp) 
 
       
-    
 
 
    
