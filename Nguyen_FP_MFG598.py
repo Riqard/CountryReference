@@ -54,7 +54,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     st.write(mesr1, rCountryDB.T)
     #Download Main Data
     df1=rCountryDB.T.to_csv().encode('utf-8')
-    st.download_button(label='Download Dataframe as CSV',data=df1,file_name=f'{txt2}{countries}{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
+    st.download_button(label='Download Data as CSV',data=df1,file_name=f'{txt2}{countries}{str(min(yR))}-{str(max(yR))}.csv',mime='text/csv')
     
 
     #Displays Total Percent Change for range
