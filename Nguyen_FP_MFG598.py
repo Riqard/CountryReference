@@ -106,7 +106,7 @@ def show_Data(data,cntry1,cntry2,rng1,rng2,yr1,mesr1,mesr2,txt1,txt2):
     perChangeAvg['Average Annual Percent Change'] = avgPerChange
     perChangeStrAvg=perChangeAvg['Average Annual Percent Change'].astype(str)+'%' 
     st.write('\n \n \n \n \n')
-    st.write(f'Average Percent Change for {txt2} from {str(min(yR))} to {str(max(yR))}')
+    st.write(f'Average Annual Percent Change for {txt2} from {str(min(yR))} to {str(max(yR))}')
     
     col3, col4 =st.columns([2,1],gap='large')
     with col3:
